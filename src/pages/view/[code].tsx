@@ -61,7 +61,7 @@ const View: NextPage = () => {
 
             <div className="rounded border border-slate-300 flex items-center">
               <div className="font-bold p-2">{event.method}</div>
-              <div>/api/request/woof</div>
+              <div>/api/request/{code}</div>
             </div>
 
             <div className="">
