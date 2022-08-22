@@ -24,8 +24,6 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     throw new Error('Missing request code.');
   }
 
-  res.status(200).json({ hello: 'world' });
-
   console.log('HEADER', req.headers);
   console.log('BODY', req.body);
   console.log('QUERY', req.query);
@@ -41,4 +39,6 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     method: req.method,
     cookies: req.cookies,
   });
+
+  res.status(200).json({ hello: 'world' });
 }
