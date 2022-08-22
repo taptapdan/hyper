@@ -17,7 +17,10 @@ const pusher = new Pusher({
   useTLS: true,
 });
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse,
+) {
   const { code } = req.query;
 
   if (!code || typeof code !== 'string') {
@@ -31,7 +34,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   console.log('METHOD', req.method);
   console.log('COOKIES', req.cookies);
 
-  pusher.trigger(code, 'events', {
+  await pusher.trigger(code, 'events', {
     headers: req.headers,
     body: req.body,
     query: req.query,
