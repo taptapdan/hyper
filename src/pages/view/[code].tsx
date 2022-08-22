@@ -44,7 +44,13 @@ const View: NextPage = () => {
   return (
     <div className="p-2">
       <div>
-        hello <code>{code}</code>
+        Viewing: <code>{code}</code>
+      </div>
+      <div>
+        Send requests to:{' '}
+        <code>
+          https://{process.env.VERCEL_URL}/request/{code}
+        </code>
       </div>
 
       {events.sort(sortByDate).map((event) => (
