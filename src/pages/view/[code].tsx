@@ -48,9 +48,7 @@ const View: NextPage = () => {
       </div>
       <div>
         Send requests to:{' '}
-        <code>
-          https://{process.env.NEXT_PUBLIC_VERCEL_URL}/request/{code}
-        </code>
+        <code>https://hyper-zeta.vercel.app/request/{code}</code>
       </div>
 
       {events.sort(sortByDate).map((event) => (
