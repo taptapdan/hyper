@@ -49,7 +49,7 @@ const View: NextPage = () => {
       <div>
         Send requests to:{' '}
         <code>
-          https://{process.env.VERCEL_URL}/request/{code}
+          https://{process.env.NEXT_PUBLIC_VERCEL_URL}/request/{code}
         </code>
       </div>
 
