@@ -35,6 +35,7 @@ export default async function handler(
   console.log('COOKIES', req.cookies);
 
   await pusher.trigger(code, 'events', {
+    now: new Date(),
     headers: req.headers,
     body: req.body,
     query: req.query,
