@@ -22,7 +22,7 @@ const sortByDate = (a: any, b: any) => {
   return 0;
 };
 
-const View: NextPage = () => {
+const ObserveCode: NextPage = () => {
   const router = useRouter();
   const { code } = router.query;
   const [events, setEvents] = useState<any[]>([]);
@@ -107,4 +107,4 @@ const View: NextPage = () => {
   );
 };
 
-export default View;
+export default ObserveCode;

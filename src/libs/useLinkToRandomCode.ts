@@ -20,7 +20,7 @@ export const useLinkToRandomCode = () => {
 
   const linkToRandomCode = () => {
     const code: string = uniqueNamesGenerator(uniqueNamesConfig);
-    router.push(`/view/${code}`);
+    router.replace(`/observe/${code}`);
   };
 
   return linkToRandomCode;
