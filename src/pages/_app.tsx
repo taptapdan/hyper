@@ -3,7 +3,7 @@ import type { AppProps } from 'next/app';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div className="h-screen bg-slate-200">
+    <div>
       <Component {...pageProps} />
     </div>
   );
