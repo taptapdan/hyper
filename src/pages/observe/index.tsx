@@ -1,8 +1,13 @@
-import { useLinkToRandomCode } from '@/libs';
+import { redirectToRandomCode } from '@/libs';
+import { useEffectOnce } from '@/libs/useEffectOnce';
 
 const Observe = () => {
-  const linkToRandomCode = useLinkToRandomCode();
-  linkToRandomCode();
+  const linkToRandomCode = redirectToRandomCode();
+
+  useEffectOnce(() => {
+    linkToRandomCode();
+  });
+
   return null;
 };
 

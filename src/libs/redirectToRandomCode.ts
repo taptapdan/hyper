@@ -15,7 +15,7 @@ const uniqueNamesConfig: Config = {
   length: 3,
 };
 
-export const useLinkToRandomCode = () => {
+export const redirectToRandomCode = () => {
   const router = useRouter();
 
   const linkToRandomCode = () => {

@@ -1,1 +1,1 @@
-export * from './useLinkToRandomCode';
+export * from './redirectToRandomCode';
