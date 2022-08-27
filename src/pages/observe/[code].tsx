@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import Pusher from 'pusher-js';
+import { BiCopyAlt } from 'react-icons/bi';
 
 Pusher.logToConsole = true;
 
@@ -42,10 +43,16 @@ const ObserveCode: NextPage = () => {
   }, [code]);
 
   return (
-    <div className="p-2">
+    <div className="p-4">
       <div className="text-center">
-        Observing requests sent to:{' '}
-        <code>https://hyper-zeta.vercel.app/request/{code}</code>
+        <span>Observing requests sent to:</span>
+        <span className="px-1" />
+
+        <code className="text-white bg-slate-600 py-2 px-3 rounded flex-inline flex-row items-center">
+          <span>https://hyper-zeta.vercel.app/request/{code}</span>
+          <span className="px-1" />
+          <BiCopyAlt className="inline-block" />
+        </code>
       </div>
 
       {events.sort(sortByDate).map((event) => (
