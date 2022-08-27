@@ -43,11 +43,8 @@ const ObserveCode: NextPage = () => {
 
   return (
     <div className="p-2">
-      <div>
-        Viewing: <code>{code}</code>
-      </div>
-      <div>
-        Send requests to:{' '}
+      <div className="text-center">
+        Observing requests sent to:{' '}
         <code>https://hyper-zeta.vercel.app/request/{code}</code>
       </div>
 

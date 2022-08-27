@@ -7,15 +7,15 @@ class MyDocument extends Document {
         <Head>
           <title>http request observer</title>
           <link
-            href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Lexend:wght@400&display=swap"
             rel="stylesheet"
           />
           <link
-            href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Lexend:wght@700&display=swap"
             rel="stylesheet"
           />
         </Head>
-        <body className="font-work-sans text-slate-800 bg-slate-500">
+        <body className="text-lg font-lexend text-slate-800 bg-slate-500">
           <Main />
           <NextScript />
         </body>

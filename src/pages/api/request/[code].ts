@@ -34,7 +34,7 @@ export default async function handler(
   console.log('METHOD', req.method);
   console.log('COOKIES', req.cookies);
 
-  await pusher.trigger(code, 'events', {
+  const msg = {
     now: new Date(),
     headers: req.headers,
     body: req.body,
@@ -42,7 +42,9 @@ export default async function handler(
     url: req.url,
     method: req.method,
     cookies: req.cookies,
-  });
+  };
 
-  res.status(200).json({ hello: 'world' });
+  await pusher.trigger(code, 'events', msg);
+
+  res.status(200).json(msg);
 }
