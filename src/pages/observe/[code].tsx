@@ -2,7 +2,10 @@ import { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import Pusher from 'pusher-js';
-import { BiCopyAlt } from 'react-icons/bi';
+import {
+  UrlWithCopyToClipboard,
+  UrlWithCopyToClipboardNotify,
+} from '@/components/UrlWithCopyToClipboard';
 
 Pusher.logToConsole = true;
 
@@ -42,72 +45,74 @@ const ObserveCode: NextPage = () => {
     return () => channel.unsubscribe();
   }, [code]);
 
+  const requestUrl = `https://localhost:3000/api/request/${code}`;
+
   return (
-    <div className="p-4">
-      <div className="text-center">
-        <span>Observing requests sent to:</span>
-        <span className="px-1" />
+    <>
+      <UrlWithCopyToClipboardNotify />
 
-        <code className="text-white bg-slate-600 py-2 px-3 rounded flex-inline flex-row items-center">
-          <span>https://hyper-zeta.vercel.app/request/{code}</span>
+      <div className="p-4">
+        <div className="text-center">
+          <span>Observing requests sent to:</span>
           <span className="px-1" />
-          <BiCopyAlt className="inline-block" />
-        </code>
+
+          <UrlWithCopyToClipboard url={requestUrl} />
+        </div>
+
+        {events.sort(sortByDate).map((event) => (
+          <>
+            <div className="bg-white rounded text-sm p-2">
+              <div className="">Request</div>
+              <div className="">Time: {event.now}</div>
+
+              <div className="rounded border border-slate-300 flex items-center">
+                <div className="font-bold p-2">{event.method}</div>
+                <div>/api/request/{code}</div>
+              </div>
+
+              <div className="">
+                <div>Query:</div>
+                <div>
+                  {Object.keys(event.query)
+                    .sort()
+                    .map((key) => (
+                      <div className="rounded border border-sky-500 bg-sky-100 text-sky-500 inline-flex py-1 px-2">
+                        <div className="font-bold">{key}:</div>
+                        <div className="pr-1" />
+                        <div>{event.query[key]}</div>
+                      </div>
+                    ))}
+                </div>
+              </div>
+
+              <div className="">
+                <div>Headers:</div>
+                <div>
+                  {Object.keys(event.headers)
+                    .sort()
+                    .map((key) => (
+                      <div className="rounded border border-sky-500 bg-sky-100 text-sky-500 inline-flex py-1 px-2">
+                        <div className="font-bold">{key}:</div>
+                        <div className="pr-1" />
+                        <div>{event.headers[key]}</div>
+                      </div>
+                    ))}
+                </div>
+              </div>
+
+              <div>
+                <div>Body:</div>
+                <pre className="rounded border border-sky-500 bg-sky-100 text-sky-500 inline-flex py-1 px-2">
+                  {JSON.stringify(event.body)}
+                </pre>
+              </div>
+            </div>
+
+            <div className="pb-4" />
+          </>
+        ))}
       </div>
-
-      {events.sort(sortByDate).map((event) => (
-        <>
-          <div className="bg-white rounded text-sm p-2">
-            <div className="">Request</div>
-            <div className="">Time: {event.now}</div>
-
-            <div className="rounded border border-slate-300 flex items-center">
-              <div className="font-bold p-2">{event.method}</div>
-              <div>/api/request/{code}</div>
-            </div>
-
-            <div className="">
-              <div>Query:</div>
-              <div>
-                {Object.keys(event.query)
-                  .sort()
-                  .map((key) => (
-                    <div className="rounded border border-sky-500 bg-sky-100 text-sky-500 inline-flex py-1 px-2">
-                      <div className="font-bold">{key}:</div>
-                      <div className="pr-1" />
-                      <div>{event.query[key]}</div>
-                    </div>
-                  ))}
-              </div>
-            </div>
-
-            <div className="">
-              <div>Headers:</div>
-              <div>
-                {Object.keys(event.headers)
-                  .sort()
-                  .map((key) => (
-                    <div className="rounded border border-sky-500 bg-sky-100 text-sky-500 inline-flex py-1 px-2">
-                      <div className="font-bold">{key}:</div>
-                      <div className="pr-1" />
-                      <div>{event.headers[key]}</div>
-                    </div>
-                  ))}
-              </div>
-            </div>
-
-            <div>
-              <div>Body:</div>
-              <pre className="rounded border border-sky-500 bg-sky-100 text-sky-500 inline-flex py-1 px-2">
-                {JSON.stringify(event.body)}
-              </pre>
-            </div>
-          </div>
-
-          <div className="pb-4" />
-        </>
-      ))}
-    </div>
+    </>
   );
 };
 
