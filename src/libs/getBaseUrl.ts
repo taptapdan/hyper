@@ -1,4 +1,8 @@
 export function getBaseUrl() {
+  console.log('VERCEL_ENV', process.env.VERCEL_ENV);
+  console.log('VERCEL_URL', process.env.VERCEL_URL);
+  console.log('NEXT_PUBLIC_BASE_URL', process.env.NEXT_PUBLIC_BASE_URL);
+
   // Use custom domain if specified and in production.
   const CUSTOM_DOMAIN =
     process.env.VERCEL_ENV === 'production' && process.env.NEXT_PUBLIC_BASE_URL;
