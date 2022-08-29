@@ -6,6 +6,7 @@ import {
   UrlWithCopyToClipboard,
   UrlWithCopyToClipboardNotify,
 } from '@/components/UrlWithCopyToClipboard';
+import { getBaseUrl } from '@/libs';
 
 Pusher.logToConsole = true;
 
@@ -45,7 +46,7 @@ const ObserveCode: NextPage = () => {
     return () => channel.unsubscribe();
   }, [code]);
 
-  const requestUrl = `https://localhost:3000/api/request/${code}`;
+  const requestUrl = `${getBaseUrl()}/api/request/${code}`;
 
   return (
     <>
