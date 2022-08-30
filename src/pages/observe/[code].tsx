@@ -75,8 +75,8 @@ const ObserveCode: NextPage = () => {
     <>
       <UrlWithCopyToClipboardNotify />
 
-      <div className="p-4">
-        <div className="text-center">
+      <div className="p-2">
+        <div className="text-center py-4">
           <span>Observing requests sent to:</span>
           <span className="px-1" />
 
@@ -86,7 +86,6 @@ const ObserveCode: NextPage = () => {
         {events.sort(sortByDate).map((event) => (
           <>
             <div className="bg-white rounded text-sm p-2">
-              <div className="">Request</div>
               <div className="">Time: {event.now}</div>
 
               <div className="rounded border border-slate-300 flex items-center">

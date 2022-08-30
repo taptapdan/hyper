@@ -21,18 +21,17 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  const { code } = req.query;
+  // Note: Next.js router provide our route params as query params. We don't
+  // want these to show up in the logs for our end users, so we'll use a route
+  // param that is extremely unlikely to be used by our users so that we can
+  // filter them out.
+  const { __wagasa__code } = req.query;
 
-  if (!code || typeof code !== 'string') {
+  if (!__wagasa__code || typeof __wagasa__code !== 'string') {
     throw new Error('Missing request code.');
   }
 
-  console.log('HEADER', req.headers);
-  console.log('BODY', req.body);
-  console.log('QUERY', req.query);
-  console.log('URL', req.url);
-  console.log('METHOD', req.method);
-  console.log('COOKIES', req.cookies);
+  delete req.query.__wagasa__code;
 
   const msg = {
     now: new Date(),
@@ -44,7 +43,7 @@ export default async function handler(
     cookies: req.cookies,
   };
 
-  await pusher.trigger(code, 'events', msg);
+  await pusher.trigger(__wagasa__code, 'events', msg);
 
   res.status(200).json(msg);
 }
