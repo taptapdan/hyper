@@ -5,7 +5,6 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <title>http request observer</title>
           <link
             href="https://fonts.googleapis.com/css2?family=Lexend:wght@300&display=swap"
             rel="stylesheet"

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Pusher from 'pusher-js';
 import {
@@ -73,6 +74,10 @@ const ObserveCode: NextPage = () => {
 
   return (
     <>
+      <Head>
+        <title>http request observer</title>
+      </Head>
+
       <UrlWithCopyToClipboardNotify />
 
       <div className="p-2">
@@ -99,7 +104,10 @@ const ObserveCode: NextPage = () => {
                   {Object.keys(event.query)
                     .sort()
                     .map((key) => (
-                      <div className="rounded border border-sky-500 bg-sky-100 text-sky-500 inline-flex py-1 px-2">
+                      <div
+                        key={key}
+                        className="rounded border border-sky-500 bg-sky-100 text-sky-500 inline-flex py-1 px-2"
+                      >
                         <div className="font-bold">{key}:</div>
                         <div className="pr-1" />
                         <div>{event.query[key]}</div>
@@ -115,7 +123,10 @@ const ObserveCode: NextPage = () => {
                     .filter(filterOutVercelHeaders)
                     .sort()
                     .map((key) => (
-                      <div className="rounded border border-sky-500 bg-sky-100 text-sky-500 inline-flex py-1 px-2">
+                      <div
+                        key={key}
+                        className="rounded border border-sky-500 bg-sky-100 text-sky-500 inline-flex py-1 px-2"
+                      >
                         <div className="font-bold">{key}:</div>
                         <div className="pr-1" />
                         <div>{event.headers[key]}</div>

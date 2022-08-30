@@ -7,7 +7,7 @@ import {
   uniqueNamesGenerator,
 } from 'unique-names-generator';
 
-export const redirectToRandomCode = () => {
+export const useRedirectToRandomCode = () => {
   const router = useRouter();
 
   const linkToRandomCode = () => {

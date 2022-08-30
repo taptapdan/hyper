@@ -5,5 +5,5 @@ export const useEffectOnce = (fn: Function) => {
   useEffect(() => {
     if (!haveRun.current) fn();
     haveRun.current = true;
-  }, []);
+  }, [fn]);
 };

@@ -1,2 +1,2 @@
 export * from './getBaseUrl';
-export * from './redirectToRandomCode';
+export * from './useRedirectToRandomCode';
