@@ -17,6 +17,29 @@ if (
   throw new Error('Must set environment variables.');
 }
 
+// https://vercel.com/docs/concepts/edge-network/headers
+const filterOutVercelHeaders = (key: string) =>
+  ![
+    'host',
+    'x-forwarded-for',
+    'x-forwarded-host',
+    'x-forwarded-proto',
+    'x-matched-path',
+    'x-real-ip',
+    'x-vercel-deployment-url',
+    'x-vercel-forwarded-for',
+    'x-vercel-id',
+    'x-vercel-ip-city',
+    'x-vercel-ip-country-region',
+    'x-vercel-ip-country',
+    'x-vercel-ip-latitude',
+    'x-vercel-ip-longitude',
+    'x-vercel-ip-timezone',
+    'x-vercel-proxied-for',
+    'x-vercel-proxy-signature-ts',
+    'x-vercel-proxy-signature',
+  ].includes(key);
+
 const pusher = new Pusher(process.env.NEXT_PUBLIC_PUSHER_KEY, {
   cluster: process.env.NEXT_PUBLIC_PUSHER_CLUSTER,
 });
@@ -90,6 +113,7 @@ const ObserveCode: NextPage = () => {
                 <div>Headers:</div>
                 <div>
                   {Object.keys(event.headers)
+                    .filter(filterOutVercelHeaders)
                     .sort()
                     .map((key) => (
                       <div className="rounded border border-sky-500 bg-sky-100 text-sky-500 inline-flex py-1 px-2">
