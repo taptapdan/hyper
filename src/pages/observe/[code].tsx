@@ -106,7 +106,7 @@ const ObserveCode: NextPage = () => {
                     .map((key) => (
                       <div
                         key={key}
-                        className="rounded border border-sky-500 bg-sky-100 text-sky-500 inline-flex py-1 px-2"
+                        className="rounded border border-sky-500 bg-sky-50 text-sky-500 inline-flex py-1 px-2"
                       >
                         <div className="font-bold">{key}:</div>
                         <div className="pr-1" />
@@ -125,7 +125,7 @@ const ObserveCode: NextPage = () => {
                     .map((key) => (
                       <div
                         key={key}
-                        className="rounded border border-sky-500 bg-sky-100 text-sky-500 inline-flex py-1 px-2"
+                        className="rounded border border-sky-500 bg-sky-50 text-sky-500 inline-flex py-1 px-2"
                       >
                         <div className="font-bold">{key}:</div>
                         <div className="pr-1" />
@@ -137,7 +137,7 @@ const ObserveCode: NextPage = () => {
 
               <div>
                 <div>Body:</div>
-                <pre className="rounded border border-sky-500 bg-sky-100 text-sky-500 inline-flex py-1 px-2">
+                <pre className="rounded border border-sky-500 bg-sky-50 text-sky-500 inline-flex py-1 px-2">
                   {JSON.stringify(event.body, null, 2)}
                 </pre>
               </div>
