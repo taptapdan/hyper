@@ -138,7 +138,7 @@ const ObserveCode: NextPage = () => {
               <div>
                 <div>Body:</div>
                 <pre className="rounded border border-sky-500 bg-sky-100 text-sky-500 inline-flex py-1 px-2">
-                  {JSON.stringify(event.body)}
+                  {JSON.stringify(event.body, null, 2)}
                 </pre>
               </div>
             </div>
