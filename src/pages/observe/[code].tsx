@@ -81,15 +81,17 @@ const ObserveCode: NextPage = () => {
       <UrlWithCopyToClipboardNotify />
 
       <div className="p-2">
-        <div className="text-center py-4">
+        <div className="text-center pt-4">
           <span>Observing requests sent to:</span>
           <span className="px-1" />
 
           <UrlWithCopyToClipboard url={requestUrl} />
         </div>
 
-        {events.sort(sortByDate).map((event) => (
-          <>
+        <div className="text-center pt-2 pb-4">
+          Requests are limited to 10kb in size.
+        </div>
+
         {events.sort(sortByDate).map((event, eventIndex) => (
           <div key={eventIndex}>
             <div className="bg-white rounded text-sm p-2">
