@@ -90,6 +90,8 @@ const ObserveCode: NextPage = () => {
 
         {events.sort(sortByDate).map((event) => (
           <>
+        {events.sort(sortByDate).map((event, eventIndex) => (
+          <div key={eventIndex}>
             <div className="bg-white rounded text-sm p-2">
               <div className="">Time: {event.now}</div>
 
@@ -144,7 +146,7 @@ const ObserveCode: NextPage = () => {
             </div>
 
             <div className="pb-4" />
-          </>
+          </div>
         ))}
       </div>
     </>
