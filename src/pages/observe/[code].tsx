@@ -9,7 +9,7 @@ import {
 } from '@/components/UrlWithCopyToClipboard';
 import { getBaseUrl } from '@/libs';
 
-Pusher.logToConsole = true;
+Pusher.logToConsole = process.env.NODE_ENV === 'development';
 
 if (
   !process.env.NEXT_PUBLIC_PUSHER_KEY ||
