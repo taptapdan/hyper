@@ -12,7 +12,11 @@
 
 ## Deploy Your Own
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Ftaptapdan%2Fhyper)
+<p align="center">
+  <a href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Ftaptapdan%2Fhyper">
+    <img src="https://vercel.com/button" alt="Deploy with Vercel" />
+  </a>
+</p>
 
 - Sign up for a [Pusher](https://pusher.com/) and create an app.
 - Deploy to Vercel.
