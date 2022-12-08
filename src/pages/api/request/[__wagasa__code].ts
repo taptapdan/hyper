@@ -45,5 +45,5 @@ export default async function handler(
 
   await pusher.trigger(__wagasa__code, 'events', msg);
 
-  res.status(200).json(msg);
+  res.status(200).json({ msg: 'ok' });
 }
