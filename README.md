@@ -1,4 +1,4 @@
-# hyper: http request observer
+# hyper: http request logger
  
 - Hyper logs out HTTP requests it receives. It includes:
   - request method
