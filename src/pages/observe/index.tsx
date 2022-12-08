@@ -1,14 +1,17 @@
-import { useRedirectToRandomCode } from '@/libs';
-import { useEffectOnce } from '@/libs/useEffectOnce';
+import { randomCode } from '@/libs';
 
 const Observe = () => {
-  const linkToRandomCode = useRedirectToRandomCode();
-
-  useEffectOnce(() => {
-    linkToRandomCode();
-  });
-
   return null;
 };
 
 export default Observe;
+
+export async function getServerSideProps() {
+  const destination = randomCode();
+
+  return {
+    redirect: {
+      destination,
+    },
+  };
+}
