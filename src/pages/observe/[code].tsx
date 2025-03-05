@@ -19,27 +19,30 @@ if (
 }
 
 // https://vercel.com/docs/concepts/edge-network/headers
-const filterOutVercelHeaders = (key: string) =>
-  ![
+const filterOutVercelHeaders = (key: string) => {
+  const headerPatterns = [
     'host',
-    'x-forwarded-for',
-    'x-forwarded-host',
-    'x-forwarded-proto',
+    'x-forwarded-*',
     'x-matched-path',
     'x-real-ip',
-    'x-vercel-deployment-url',
-    'x-vercel-forwarded-for',
-    'x-vercel-id',
-    'x-vercel-ip-city',
-    'x-vercel-ip-country-region',
-    'x-vercel-ip-country',
-    'x-vercel-ip-latitude',
-    'x-vercel-ip-longitude',
-    'x-vercel-ip-timezone',
-    'x-vercel-proxied-for',
-    'x-vercel-proxy-signature-ts',
-    'x-vercel-proxy-signature',
-  ].includes(key);
+    'x-vercel-*',
+  ];
+
+  for (const pattern of headerPatterns) {
+    if (pattern.includes('*')) {
+      // Filter out wildcards
+      const regex = new RegExp(`^${pattern.replace(/\*/g, '.*')}$`);
+      if (regex.test(key)) {
+        return false;
+      }
+    } else if (key === pattern) {
+      // Filter out exact matches
+      return false;
+    }
+  }
+
+  return true;
+};
 
 const pusher = new Pusher(process.env.NEXT_PUBLIC_PUSHER_KEY, {
   cluster: process.env.NEXT_PUBLIC_PUSHER_CLUSTER,
